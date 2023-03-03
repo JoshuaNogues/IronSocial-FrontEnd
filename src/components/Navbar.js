@@ -25,7 +25,8 @@ function Navbar() {
 
     const { logout } = useContext(AuthContext)
 
-    
+    console.log(user)
+
   return (
     <nav className={"Navbar " + mode}>
 
@@ -34,8 +35,7 @@ function Navbar() {
   getToken() ? 
   <>
         <Link to={'/home'}>Home</Link>
-        {<Link to={`/profile/${user}`}>Profile</Link>}
-        <Link to={'/new-post'}>New Post</Link>
+        {<Link to={`/profile/${user._id}`}>Profile</Link>}
         <button onClick={logout}>Logout</button>
     </>
 
