@@ -7,22 +7,27 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { AuthProvider } from "./context/auth.context";
+import { LoadingProvider } from "./context/loading.context";
 
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProviderWrapper } from "./context/theme.context"; 
- 
+import { ThemeProviderWrapper } from "./context/theme.context";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
- 
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-     <AuthProvider>
-      <ThemeProviderWrapper>        
-        <App />
+      <ThemeProviderWrapper>
+        <LoadingProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </LoadingProvider>
       </ThemeProviderWrapper>
-     </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
- 
+
+reportWebVitals();
+
 reportWebVitals();

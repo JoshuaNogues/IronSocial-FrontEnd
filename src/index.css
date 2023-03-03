@@ -16,7 +16,7 @@ code {
   min-height: 100vh;
 }
  
-.HomePage {
+.Home, .SignUp, .Login {
   padding: 20px;
   min-height: 100vh;
 }
@@ -59,32 +59,40 @@ code {
   text-align: center;
 }
 
-.light {
+.☀ {
   background-color: #efeded;
 }
  
-.dark {
+.☽ {
   background-color: #18191a;
 }
  
-.Navbar.light {
+.Navbar.☀ {
   background-color: #ffffff;
 }
  
-.Navbar.dark {
+.Navbar.☽{
   background-color: #252526;
 }
  
-.light a,
-.light p,
-.light h1,
-.light h3 {
+.☀ a,
+.☀ p,
+.☀ h1,
+.☀ h3 {
   color: #000000;
 }
  
-.dark a,
-.dark p,
-.dark h1,
-.dark h3 {
+.☽ a,
+.☽ p,
+.☽ h1,
+.☽ h3 {
+  color: #ffffff;
+}
+
+.☀ label {
+  color: #000000;
+}
+
+.☽ label {
   color: #ffffff;
 }

@@ -10,7 +10,7 @@ const ThemeContext = createContext();
 function ThemeProviderWrapper({ children }) {
 
     const [ toggle, setToggle ] = useState(true)
-    const [ mode, setMode ] = useState('light')
+    const [ mode, setMode ] = useState('☀')
 
   return (
 

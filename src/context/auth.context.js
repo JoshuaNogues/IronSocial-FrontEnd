@@ -32,8 +32,6 @@ const AuthProvider = ({ children }) => {
                 })
                 .finally(() => {
                     setIsLoading(false)
-                    // console.log("This is the user", user)
-                    // console.log("LINee 38 message", message)
                 });
             } else {
                 localStorage.clear()
@@ -47,10 +45,10 @@ const AuthProvider = ({ children }) => {
     const logout = () => {
         localStorage.clear();
         setMessage("You are logged out.");
-        console.log("we've logged out")
         setUser(null);
         navigate("/");
       };
+      
 
 
     useEffect(() => {

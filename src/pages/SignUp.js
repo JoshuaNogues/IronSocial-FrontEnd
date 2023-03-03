@@ -1,11 +1,12 @@
 import { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { post } from "../services/authService"
 import { AuthContext } from '../context/auth.context'
+import { ThemeContext } from "../context/theme.context"
 
 const SignUp = () => {
 
-    // const { authenticateUser } = useContext(AuthContext)
+    const { authenticateUser } = useContext(AuthContext)
 
     const [ newUser, setNewUser ] = useState(
         {
@@ -38,26 +39,28 @@ const SignUp = () => {
                 console.log(err)
             })
             .finally(() => {
-                // authenticateUser()
+                authenticateUser()
             })
     } 
 
+    const { mode } = useContext(ThemeContext)
+
     return (
-        <div>
+        <div className={"SignUp " + mode}>
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
 
                 <label>First Name</label>
-                <input type='text' name="name" value={newUser.firstName} onChange={handleChange}></input>
+                <input type='text' name="firstName" value={newUser.firstName} onChange={handleChange}></input>
 
                 <label>Last Name</label>
-                <input type='text' name="name" value={newUser.lastName} onChange={handleChange}></input>
+                <input type='text' name="lastName" value={newUser.lastName} onChange={handleChange}></input>
 
                 <label>Email</label>
                 <input type='email' name="email" value={newUser.email} onChange={handleChange}></input>
 
                 <label>Username</label>
-                <input type='text' name="name" value={newUser.username} onChange={handleChange}></input>
+                <input type='text' name="username" value={newUser.username} onChange={handleChange}></input>
 
                 <label>Password</label>
                 <input type='password' name="password" value={newUser.password} onChange={handleChange}></input>
@@ -65,6 +68,8 @@ const SignUp = () => {
                 <button type="submit">Sign Up</button>
 
             </form>
+
+            <p>Already registered? <Link to="/">Log In Here.</Link></p>
 
         </div>
     )
