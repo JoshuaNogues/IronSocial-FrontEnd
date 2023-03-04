@@ -97,19 +97,19 @@ code {
   color: #ffffff;
 }
 
+/* Home page css */
 .Home {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.post-container {
+  }
+  
+  .post-container {
   display: flex;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.post {
+  align-items: flex-start;
+  }
+  
+  .post, .post-container {
   display: flex;
   flex: 1;
   align-items: center;
@@ -117,12 +117,24 @@ code {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-}
-
-
-.profile-pic {
+  margin-bottom: 20px;
+  width: 300px;
+  }
+  
+  .profile-pic {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
-}
+  }
+  
+  /* Dark mode */
+  .☽ .post, .☽ .post-container {
+  background-color: #252526;
+  color: white;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+  
+  .☽ .profile-pic {
+  border: 2px solid white;
+  }
