@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import { LoadingContext } from "./context/loading.context";
 import { useContext } from "react"; 
+import EditProfile from "./pages/EditProfile";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route element={<LoggedIn />}>
           <Route path="/home" element={<Home />} />
           <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/edit-profile/:userId" element={<EditProfile />} />
         </Route>
       </Routes>
     </div>
