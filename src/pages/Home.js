@@ -55,11 +55,16 @@ const Home = () => {
       <button className="post-button" onClick={handleSubmit}>Post</button>
     </div>
 
-    {postList.length ? postList.map((posts) => {
-        return (
-            <h1>{posts.post}</h1>
-        )
-    }) : <p>...Loading </p>}
+    {postList.length ? postList.map((post) => {
+  return (
+    <div key={post._id}>
+      <img className="profile-pic" src="https://via.placeholder.com/50" alt="Profile" />
+      <p>{post.post}</p>
+      <p>Contributor: {post.contributor.username}</p>
+    </div>
+  );
+}) : <p>...Loading </p>}
+
     </div>
 
   )
