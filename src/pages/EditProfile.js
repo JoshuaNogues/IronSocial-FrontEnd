@@ -41,11 +41,11 @@ console.log(username)
     const requestBody = {username, location, occupation}
     setIsLoading(true);
     try {
-      const res = await post(`/users/edit-profile/${user._doc._id}`, requestBody);
+      const res = await post(`/users/edit-profile/${user._id}`, requestBody);
       console.log(res)
-    //   setUser(res.data);
-      setError("");
       setSuccess("Profile updated successfully!");
+      setUser(res.data);
+      setError("");
     } catch (error) {
       setError(error.response.data.message);
     }

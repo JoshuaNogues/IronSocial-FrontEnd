@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [postList, setPostList] = useState("");
-  const { user } = useContext(LoadingContext);
+  const { user, setUser } = useContext(LoadingContext);
   const { mode } = useContext(ThemeContext);
   const [postText, setPostText] = useState("");
 
@@ -31,12 +31,13 @@ const Home = () => {
   console.log(user);
 
   const isUserPost = (post) => {
-    return post.contributor._id === user._doc._id;
+    return post.contributor._id === user._id;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    post(`/post/create-post/${user._doc._id}`, { postText }).then((result) => {
+    post(`/post/create-post/${user._id}`, { postText }).then((result) => {
+      setUser(result.data)
       fetchPosts();
       console.log(result.data);
     });
@@ -76,7 +77,7 @@ const Home = () => {
               <div className="post-content">
                 <p>{post.post}</p>
                 {isUserPost(post) && (
-  <Link to={`/edit-post/${post._id}/${user._doc._id}`}>Edit</Link>
+  <Link to={`/edit-post/${post._id}`}>Edit</Link>
 )}
               </div>
             </div>

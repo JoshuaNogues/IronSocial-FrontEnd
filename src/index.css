@@ -149,6 +149,11 @@ code {
     cursor: pointer;
   }
 
+  .edit-post {
+    display: flex;
+    margin-top: 5vh;
+  }
+
   /* Media Queries */
   @media screen and (max-width: 768px) {
     .Navbar {

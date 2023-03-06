@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { get, post } from "../services/authService";
 
 const EditPost = () => {
-  const { postId, userId } = useParams();
-  const [posts, setPosts] = useState('');
+  const { postId } = useParams();
+  const [posts, setPosts] = useState(null);
 
-  useEffect(() => {
-    get(`/post/${postId}`)
-      .then((res) => {
-        setPosts(res.data.post);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [postId]);
 
   const handlePostChange = (e) => {
-    setPosts(e.target.value);
+    setPosts((previous) => ({
+      ...previous,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    post(`/post/edit-post/${postId}/${userId}`, { post: posts })
+    post(`/post/edit-post/${postId}`, posts)
       .then((res) => {
         console.log(res.data);
       })
@@ -31,12 +25,34 @@ const EditPost = () => {
       });
   };
 
+  useEffect(() => {
+    get(`/post/edit-post/${postId}`)
+      .then((res) => {
+        console.log("this is the post", res.data);
+        setPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [postId]);
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <textarea value={posts} onChange={handlePostChange} />
-        <button type="submit">Save</button>
-      </form>
+      {posts ? (
+        <div className="edit-post">
+              <h3>{posts.contributor.username}</h3>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              value={posts.post}
+              name="post"
+              onChange={handlePostChange}
+              />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      ) : (
+        <h4>Loading...</h4>
+      )}
     </div>
   );
 };
