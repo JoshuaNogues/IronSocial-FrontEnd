@@ -1,25 +1,26 @@
 import { useState, useContext } from "react";
-import axios from "axios";
 import { LoadingContext } from "../context/loading.context";
 import { ThemeContext } from "../context/theme.context";
+import { post } from "../services/authService";
 
 const EditProfile = () => {
   const { user, setUser } = useContext(LoadingContext);
   const { mode } = useContext(ThemeContext);
   const [profileImage, setProfileImage] = useState("");
-  const [password, setPassword] = useState("");
   const [location, setLocation] = useState("");
   const [occupation, setOccupation] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleImageChange = (e) => {
     setProfileImage(e.target.files[0]);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+//   const handlePasswordChange = (e) => {
+//     setPassword(e.target.value);
+//   };
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -33,51 +34,53 @@ const EditProfile = () => {
     setUsername(e.target.value);
   };
 
+console.log(username)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const requestBody = {username, location, occupation}
+    setIsLoading(true);
     try {
-      const formData = new FormData();
-      formData.append("profile_image", profileImage);
-      formData.append("password", password);
-      formData.append("location", location);
-      formData.append("occupation", occupation);
-      formData.append("username", username);
-      const res = await axios.patch(`/users/${user._id}`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setUser(res.data);
+      const res = await post(`/users/edit-profile/${user._doc._id}`, requestBody);
+      console.log(res)
+    //   setUser(res.data);
       setError("");
+      setSuccess("Profile updated successfully!");
     } catch (error) {
       setError(error.response.data.message);
     }
+    setIsLoading(false);
   };
 
   return (
     <div className={"Home " + mode}>
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           <label>Profile Image:</label>
           <input type="file" onChange={handleImageChange} />
-        </div>
+        </div> */}
         <div>
-          <label>Password:</label>
-          <input type="password" onChange={handlePasswordChange} />
+          <label>Username:</label>
+          <input type="text" name="username" onChange={handleUsernameChange} />
         </div>
+        {/* <div>
+          <label>Password:</label>
+          <input type="password" name="password" onChange={handlePasswordChange} />
+        </div> */}
         <div>
           <label>Location:</label>
-          <input type="text" onChange={handleLocationChange} />
+          <input type="text" name="location" onChange={handleLocationChange} />
         </div>
         <div>
           <label>Occupation:</label>
-          <input type="text" onChange={handleOccupationChange} />
-        </div>
-        <div>
-          <label>Username:</label>
-          <input type="text" onChange={handleUsernameChange} />
+          <input type="text" name="occupation" onChange={handleOccupationChange} />
         </div>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Save Changes</button>
+        {success && <p style={{ color: "green" }}>{success}</p>}
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Save Changes"}
+        </button>
       </form>
     </div>
   );

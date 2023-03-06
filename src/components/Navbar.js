@@ -35,7 +35,7 @@ function Navbar() {
   getToken() ? 
   <>
         <Link to={'/home'}>Home</Link>
-        {<Link to={`/profile/${user._id}`}>Profile</Link>}
+        {user && <Link to={`/profile/${user._doc._id}`}>Profile</Link>}
         <button onClick={logout}>Logout</button>
     </>
 

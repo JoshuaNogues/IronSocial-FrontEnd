@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import { LoadingContext } from "./context/loading.context";
 import { useContext } from "react"; 
 import EditProfile from "./pages/EditProfile";
+import EditPost from "./pages/EditPost";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route element={<LoggedIn />}>
           <Route path="/home" element={<Home />} />
           <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/edit-post/:postId/:userId" element={<EditPost />} />
           <Route path="/edit-profile/:userId" element={<EditProfile />} />
         </Route>
       </Routes>

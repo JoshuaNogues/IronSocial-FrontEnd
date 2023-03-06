@@ -2,6 +2,7 @@ import { ThemeContext } from "../context/theme.context";
 import { useContext, useEffect, useState } from "react";
 import { post, get } from "../services/authService";
 import { LoadingContext } from "../context/loading.context";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [postList, setPostList] = useState("");
@@ -40,6 +41,7 @@ const Home = () => {
       console.log(result.data);
     });
   };
+  console.log(postList)
 
   return (
     <div className={"Home " + mode}>
@@ -73,7 +75,9 @@ const Home = () => {
               <h4>{post.contributor.username}</h4>
               <div className="post-content">
                 <p>{post.post}</p>
-                {isUserPost(post) && <button>Edit</button>}
+                {isUserPost(post) && (
+  <Link to={`/edit-post/${post._id}/${user._doc._id}`}>Edit</Link>
+)}
               </div>
             </div>
           </div>

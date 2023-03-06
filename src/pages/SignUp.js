@@ -14,7 +14,9 @@ const SignUp = () => {
             lastName: "",
             email: "",
             username: "",
-            password: ""
+            password: "",
+            location: "",
+            occupation: ""
         }
     )
 
@@ -64,6 +66,12 @@ const SignUp = () => {
 
                 <label>Password</label>
                 <input type='password' name="password" value={newUser.password} onChange={handleChange}></input>
+
+                <label>Location</label>
+                <input type='text' name="location" value={newUser.location} onChange={handleChange}></input>
+
+                <label>Occupation</label>
+                <input type='text' name="occupation" value={newUser.occupation} onChange={handleChange}></input>
 
                 <button type="submit">Sign Up</button>
 
