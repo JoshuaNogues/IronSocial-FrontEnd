@@ -18,10 +18,6 @@ const EditProfile = () => {
     setProfileImage(e.target.files[0]);
   };
 
-//   const handlePasswordChange = (e) => {
-//     setPassword(e.target.value);
-//   };
-
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
@@ -38,15 +34,16 @@ console.log(username)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const requestBody = {username, location, occupation}
+    const requestBody = {profileImage, username, location, occupation}
     setIsLoading(true);
     try {
       const res = await post(`/users/edit-profile/${user._id}`, requestBody);
       console.log(res)
-      setSuccess("Profile updated successfully!");
       setUser(res.data);
+      setSuccess("Profile updated successfully!");
       setError("");
     } catch (error) {
+      console.log(error);
       setError(error.response.data.message);
     }
     setIsLoading(false);
@@ -56,18 +53,14 @@ console.log(username)
     <div className={"Home " + mode}>
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit}>
-        {/* <div>
+        <div>
           <label>Profile Image:</label>
-          <input type="file" onChange={handleImageChange} />
-        </div> */}
+          <input type="text" name="profile_image" onChange={handleImageChange} />
+        </div>
         <div>
           <label>Username:</label>
           <input type="text" name="username" onChange={handleUsernameChange} />
         </div>
-        {/* <div>
-          <label>Password:</label>
-          <input type="password" name="password" onChange={handlePasswordChange} />
-        </div> */}
         <div>
           <label>Location:</label>
           <input type="text" name="location" onChange={handleLocationChange} />
@@ -76,8 +69,8 @@ console.log(username)
           <label>Occupation:</label>
           <input type="text" name="occupation" onChange={handleOccupationChange} />
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
         {success && <p style={{ color: "green" }}>{success}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Loading..." : "Save Changes"}
         </button>

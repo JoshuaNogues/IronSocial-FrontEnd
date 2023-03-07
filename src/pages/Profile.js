@@ -1,20 +1,30 @@
-import { LoadingContext } from "../context/loading.context";
 import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/theme.context";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { LoadingContext } from "../context/loading.context";
 import { AuthContext } from "../context/auth.context";
+import { get } from "../services/authService";
 
 const Profile = () => {
-  const { user, setUser } = useContext(LoadingContext);
+  const { user } = useContext(LoadingContext);
   const { mode } = useContext(ThemeContext);
-  const { userId } = useParams();
   const { authenticateUser } = useContext(AuthContext);
+
+  const handleDelete = (postId) => {
+    const userId = user._id;
+      get(`/post/delete-post/${postId}/${userId}`)
+      .then((res) => {
+        console.log("Post deleted:", res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   console.log("this is the user", user);
 
   useEffect(() => {
     if (!user) {
       authenticateUser();
+      console.log(user)
     }
   }, []);
 
@@ -23,7 +33,7 @@ const Profile = () => {
       <h1>Profile</h1>
       {user && (
         <div>
-          <img src={user.profile_image} alt="Profile" />
+          <img className="profile-pic" src={user.profile_image} alt="Profile" />
           <p>Hi, {user.firstName}</p>
           <p>{user.location}</p>
           <p>{user.occupation}</p>
@@ -37,7 +47,16 @@ const Profile = () => {
           {user.posts.map((post) => {
             return (
               <div className="post-container">
+                <img
+              className="profile-pic"
+              src={user.profile_image}
+              alt="Profile"
+            />
                 <p>{post.post}</p>
+                <div>
+              <Link to={`/edit-post/${post._id}`}>Edit</Link>
+              <button className="delete" onClick={() => handleDelete(post._id)}>Delete</button>
+            </div>
               </div>
             );
           })}
