@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { get, post } from "../services/authService";
 
 const EditPost = () => {
   const { postId } = useParams();
   const [posts, setPosts] = useState(null);
+  const navigate = useNavigate()
 
 
   const handlePostChange = (e) => {
@@ -18,6 +19,7 @@ const EditPost = () => {
     e.preventDefault();
     post(`/post/edit-post/${postId}`, posts)
       .then((res) => {
+        navigate("/home")
         console.log(res.data);
       })
       .catch((err) => {

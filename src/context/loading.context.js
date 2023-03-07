@@ -11,7 +11,7 @@ const LoadingProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [message, setMessage] = useState('');
 
-    const [ posts, setPosts ] = useState([])
+    const [ posts, setPosts ] = useState(null)
     const [ post, setPost ] = useState(null)
 
     const setTimedMessage = (newMessage) => {
@@ -22,12 +22,14 @@ const LoadingProvider = ({ children }) => {
     }
 
   const getPosts = () => {
-    get('/posts')
+    console.log("getting posts")
+    get('/post')
     .then((results) => {
+      console.log("these are the found posts", results.data)
       setPosts(results.data)
     })
     .catch((err) => {
-      console.log(err)
+      console.log("theres been an err",err)
     })
   }
 

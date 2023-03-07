@@ -21,28 +21,28 @@ const Profile = () => {
 
   console.log("this is the user", user);
 
-  useEffect(() => {
-    if (!user) {
-      authenticateUser();
-      console.log(user)
-    }
-  }, []);
+//   useEffect(() => {
+//     if (!user) {
+//       authenticateUser();
+//       console.log(user)
+//     }
+//   }, []);
 
   return (
-    <div className={"Home " + mode}>
+    <div className={"Profile " + mode}>
       <h1>Profile</h1>
       {user && (
         <div>
           <img className="profile-pic" src={user.profile_image} alt="Profile" />
           <p>Hi, {user.firstName}</p>
-          <p>{user.location}</p>
-          <p>{user.occupation}</p>
+          <p>📍{user.location}</p>
+          <p>💻{user.occupation}</p>
           <Link to={`/edit-profile/${user._id}`}>Edit Profile</Link>
         </div>
       )}
 
       <h3>My Posts</h3>
-      {user.posts.length ? (
+      {user?.posts.length ? (
         <>
           {user.posts.map((post) => {
             return (
