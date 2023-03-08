@@ -9,10 +9,13 @@ import { LoadingContext } from "./context/loading.context";
 import { useContext } from "react"; 
 import EditProfile from "./pages/EditProfile";
 import EditPost from "./pages/EditPost";
+import { ThemeContext } from "./context/theme.context";
+
 
 function App() {
 
   const { user } = useContext(LoadingContext)
+  const { mode } = useContext(ThemeContext)
 
   const getToken = () => {
     return localStorage.getItem("authToken")
@@ -27,7 +30,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={"App " + mode}>
       {user && <Navbar />}
       <Routes>
         <Route element={<NotLoggedIn />}>

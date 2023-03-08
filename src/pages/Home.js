@@ -157,7 +157,6 @@ const Home = () => {
         )}
       </div>
       <div className="timeline-container">
-        <h1>Timeline</h1>
         <div className="post">
           <img
             className="profile-pic"
@@ -178,16 +177,23 @@ const Home = () => {
         {posts ? (
           posts.map((post) => (
             <div key={post._id} className="post-container">
-              <img
-                className="profile-pic"
-                src={post.contributor.profile_image}
-                alt="Profile"
-              />
-              <div className="post-details">
-                <h4>{post.contributor.username}</h4>
-                <p className="occupation">{post.contributor.occupation}</p>
+              <div className="post-user-info">
+                <div className="profile-pic-div">
+                <img
+                  className="profile-pic"
+                  src={post.contributor.profile_image}
+                  alt="Profile"/>
+                </div> 
+                <div className="post-details">
+                  <h4>{post.contributor.username}</h4>
+                  <p className="occupation">{post.contributor.occupation}</p>
+                  </div>
+                </div>
                 <div className="post-content">
                   <p>{post.post}</p>
+                  <hr></hr>
+                  </div>
+                  <div className="post-actions">
                   {
     user && 
     <>
@@ -220,6 +226,7 @@ const Home = () => {
         )}
     </>
 }
+</div>
                   {post.bool && (
                     <>
                       <form
@@ -249,15 +256,15 @@ const Home = () => {
 
 
 }
-                </div>
-              </div>
+                
+              
             </div>
           ))
         ) : (
           <p>...Loading </p>
         )}
       </div>
-      <div>
+      <div className="profile-preview">
         <h3>Friends List</h3>
       </div>
     </div>

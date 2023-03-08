@@ -12,7 +12,7 @@ const Profile = () => {
 
   const handleDelete = (postId) => {
     const userId = user._id;
-      get(`/post/delete-post/${postId}/${userId}`)
+    get(`/post/delete-post/${postId}/${userId}`)
       .then((res) => {
         console.log("Post deleted:", res.data);
       })
@@ -21,12 +21,12 @@ const Profile = () => {
 
   console.log("this is the user", user);
 
-//   useEffect(() => {
-//     if (!user) {
-//       authenticateUser();
-//       console.log(user)
-//     }
-//   }, []);
+  //   useEffect(() => {
+  //     if (!user) {
+  //       authenticateUser();
+  //       console.log(user)
+  //     }
+  //   }, []);
 
   return (
     <div className={"Profile " + mode}>
@@ -47,16 +47,31 @@ const Profile = () => {
           {user.posts.map((post) => {
             return (
               <div className="post-container">
-                <img
-              className="profile-pic"
-              src={user.profile_image}
-              alt="Profile"
-            />
-                <p>{post.post}</p>
-                <div>
-              <Link to={`/edit-post/${post._id}`}>Edit</Link>
-              <button className="delete" onClick={() => handleDelete(post._id)}>Delete</button>
-            </div>
+                <div className="post-user-info">
+                  <div className="profile-pic-div">
+                    <img
+                      className="profile-pic"
+                      src={user.profile_image}
+                      alt="Profile"
+                    />
+                  </div>
+                  <div className="post-details">
+                    <h4>{user.username}</h4>
+                    <p className="occupation">{user.occupation}</p>
+                  </div>
+                </div>
+                    <div className="post-content">
+                        <p>{post.post}</p>
+                    </div>
+                <div className="post-actions">
+                  <Link to={`/edit-post/${post._id}`}>Edit</Link>
+                  <button
+                    className="delete"
+                    onClick={() => handleDelete(post._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             );
           })}

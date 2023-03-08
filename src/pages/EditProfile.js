@@ -50,7 +50,7 @@ console.log(username)
   };
 
   return (
-    <div className={"Home " + mode}>
+    <div className={"Profile " + mode}>
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit}>
         <div>
