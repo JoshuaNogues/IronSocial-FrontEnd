@@ -288,6 +288,26 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
+  .post-button {
+    padding: 5px 10px;
+    background-color: #004aad;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .post-button:hover {
+    background-color: #003b8c;
+  }
+  
+  .post-button:active {
+    background-color: #002260;
+  }
+  
+
   .timeline-container {
     margin-top: 30px;
     display: flex;
@@ -440,9 +460,55 @@ button {
   .sponsored h4 {
     margin: 0px
   }
+
+  /* edit post page */
+  .edit-post {
+    width: 300px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .edit-post form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-post textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    resize: none;
+    height: 200px;
+  }
+  
+  .edit-post button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .edit-post button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .edit-post h4 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 30px;
+  }
   
   /* Dark mode */
-  .☽ .post, .☽ .post-container {
+  .☽ .post, .☽ .post-container,  .☽ .sponsored {
   background-color: #252526;
   color: white;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);

@@ -42,7 +42,6 @@ const EditPost = () => {
     <div>
       {posts ? (
         <div className="edit-post">
-              <h3>{posts.contributor.username}</h3>
           <form onSubmit={handleSubmit}>
             <textarea
               value={posts.post}
