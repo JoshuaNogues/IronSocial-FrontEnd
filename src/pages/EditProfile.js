@@ -14,10 +14,6 @@ const EditProfile = () => {
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleImageChange = (e) => {
-    setProfileImage(e.target.files[0]);
-  };
-
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
@@ -49,13 +45,33 @@ console.log(username)
     setIsLoading(false);
   };
 
+  const handleFileUpload = (e) => {
+
+    console.log("Uploading photo...")
+
+      const uploadData = new FormData()
+      uploadData.append('profileImage', e.target.files[0])
+
+      console.log("FILE LIST", e.target.files)
+    console.log("this is upload data", uploadData)
+      if (e.target.files.length){
+      post('/users/new-profile-photo', uploadData)
+        .then((result) => {
+          setProfileImage(result.data.profileImage)
+          console.log("This is photo", result.data)
+        })
+        .catch((err) => {
+          console.log("Upload error", err)
+        })}
+  }
+
   return (
     <div className={"Profile " + mode}>
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Profile Image:</label>
-          <input type="text" name="profile_image" onChange={handleImageChange} />
+          <input type="file" name="profileImage" onChange={(e) => handleFileUpload(e)} />
         </div>
         <div>
           <label>Username:</label>
