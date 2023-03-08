@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { LoadingContext } from "../context/loading.context";
 import { ThemeContext } from "../context/theme.context";
 import { post } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const { user, setUser } = useContext(LoadingContext);
@@ -13,6 +14,7 @@ const EditProfile = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -31,6 +33,7 @@ console.log(username)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const requestBody = {profileImage, username, location, occupation}
+    console.log("this is line 33", requestBody)
     setIsLoading(true);
     try {
       const res = await post(`/users/edit-profile/${user._id}`, requestBody);
@@ -41,6 +44,8 @@ console.log(username)
     } catch (error) {
       console.log(error);
       setError(error.response.data.message);
+    } finally {
+        navigate(`/profile/${user._id}`)
     }
     setIsLoading(false);
   };

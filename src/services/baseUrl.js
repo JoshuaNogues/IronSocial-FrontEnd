@@ -1,1 +1,1 @@
-export const baseUrl = "https://ironsocial.fly.dev/"
+export const baseUrl = "https://ironsocial.fly.dev"
