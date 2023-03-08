@@ -32,7 +32,7 @@ const Profile = () => {
     <div className={"Profile " + mode}>
       <h1>Profile</h1>
       {user && (
-        <div>
+        <div className="profile-top">
           <img className="profile-page-pic" src={user.profile_image} alt="Profile" />
           <h4>Hi, {user.firstName}</h4>
           <p>📍{user.location}</p>

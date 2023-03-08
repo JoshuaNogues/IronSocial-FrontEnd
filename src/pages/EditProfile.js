@@ -75,19 +75,19 @@ console.log(username)
       <h1>Edit Profile</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Profile Image:</label>
+          <label className="label-profile">Profile Image:</label>
           <input type="file" name="profileImage" onChange={(e) => handleFileUpload(e)} />
         </div>
         <div>
-          <label>Username:</label>
+          <label className="label-profile">Username:</label>
           <input type="text" name="username" onChange={handleUsernameChange} />
         </div>
         <div>
-          <label>Location:</label>
+          <label className="label-profile">Location:</label>
           <input type="text" name="location" onChange={handleLocationChange} />
         </div>
         <div>
-          <label>Occupation:</label>
+          <label className="label-profile">Occupation:</label>
           <input type="text" name="occupation" onChange={handleOccupationChange} />
         </div>
         {success && <p style={{ color: "green" }}>{success}</p>}

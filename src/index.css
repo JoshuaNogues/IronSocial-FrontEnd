@@ -231,6 +231,14 @@ button {
   flex-direction: column;
 }
 
+.profile-top {
+  width: 560px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+  border-radius: 10px;
+  padding: 20px 0px 20px 0px;
+}
+
 .profile-page-pic {
   width: 250px;
   height: 250px;
@@ -374,7 +382,6 @@ button {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-right: 30px;
   margin-bottom: 10px;
   /* width: 300px; */
   width: 540px;
@@ -611,7 +618,7 @@ form div {
   align-items: center;
 }
 
-label {
+.label-profile {
   flex-basis: 25%;
   text-align: left;
 }
@@ -624,7 +631,7 @@ input[type="file"] {
 
 
   /* Dark mode */
-  .☽ .post, .☽ .post-container,  .☽ .sponsored {
+  .☽ .post, .☽ .post-container,  .☽ .sponsored, .☽ .profile-top {
   background-color: #252526;
   color: white;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
