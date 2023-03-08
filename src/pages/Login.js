@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { post } from "../services/authService"
 import { Link } from 'react-router-dom';
+import textLogo from "../images/text.png"
 
 function HomePage() {
 
@@ -45,6 +46,7 @@ function HomePage() {
 
   return (
     <div className={"Login " + mode}>
+      <img src={textLogo} alt="Logo" />
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email</label>

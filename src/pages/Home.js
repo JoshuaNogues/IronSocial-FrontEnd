@@ -13,6 +13,7 @@ const Home = () => {
   const { authenticateUser } = useContext(AuthContext);
   const [specificPost, setSpecificPost] = useState("");
   const [comment, setComment] = useState("");
+  const [photo, setPhoto] = useState("");
 
   // const fetchPosts = async () => {
   //   try {
@@ -96,7 +97,7 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    post(`/post/create-post/${user._id}`, { postText }).then((result) => {
+    post(`/post/create-post/${user._id}`, { postText, photo }).then((result) => {
       getPosts();
       console.log(result.data);
     });
@@ -131,6 +132,27 @@ const Home = () => {
         })
     ;
   };
+
+  const handleFileUpload = (e) => {
+
+    console.log("Uploading photo...")
+
+      const uploadData = new FormData()
+      uploadData.append('profileImage', e.target.files[0])
+
+      console.log("FILE LIST", e.target.files)
+    console.log("this is upload data", uploadData)
+      if (e.target.files.length){
+      post('/users/new-profile-photo', uploadData)
+        .then((result) => {
+          setPhoto(result.data.profileImage)
+          console.log("This is photo", result.data)
+        })
+        .catch((err) => {
+          console.log("Upload error", err)
+        })}
+  }
+
 
   useEffect(() => {
     if(!posts){
@@ -170,6 +192,8 @@ const Home = () => {
             value={postText}
             onChange={handlePost}
           />
+          <input className="hidden" type="file" name="photo" id="photo" onChange={(e) => handleFileUpload(e)} />
+          <label for="photo"><img className="img-logo" src="https://img.icons8.com/ios-glyphs/256/image.png" /></label>
           <button className="post-button" onClick={handleSubmit}>
             Post
           </button>
@@ -191,7 +215,9 @@ const Home = () => {
                 </div>
                 <div className="post-content">
                   <p>{post.post}</p>
-                  <hr></hr>
+                  {
+                    post.photo && (<img src={post.photo} alt="picture"/>)
+                  }
                   </div>
                   <div className="post-actions">
                   {

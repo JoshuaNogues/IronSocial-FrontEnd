@@ -62,7 +62,6 @@ const Profile = () => {
                 </div>
                     <div className="post-content">
                         <p>{post.post}</p>
-                        <hr></hr>
                     </div>
                 <div className="post-actions">
                   <Link to={`/edit-post/${post._id}`}>Edit</Link>
