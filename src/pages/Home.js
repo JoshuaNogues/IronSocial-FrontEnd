@@ -266,8 +266,11 @@ const Home = () => {
           <p>...Loading </p>
         )}
       </div>
-      <div className="profile-preview">
-        <h3>Sponsored</h3>
+      <div className="sponsored">
+        <h4>Sponsored</h4>
+        <p>by LinkedIn</p>
+        <img src='https://kinsta.com/wp-content/uploads/2018/09/linkedin-statistics-1024x512.png' />
+        <p>Where we connect the world's professionals to make them more productive and successful.</p>
       </div>
     </div>
   );
