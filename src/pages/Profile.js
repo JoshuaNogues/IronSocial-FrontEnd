@@ -33,11 +33,11 @@ const Profile = () => {
       <h1>Profile</h1>
       {user && (
         <div>
-          <img className="profile-pic" src={user.profile_image} alt="Profile" />
-          <p>Hi, {user.firstName}</p>
+          <img className="profile-page-pic" src={user.profile_image} alt="Profile" />
+          <h4>Hi, {user.firstName}</h4>
           <p>📍{user.location}</p>
           <p>💻{user.occupation}</p>
-          <Link to={`/edit-profile/${user._id}`}>Edit Profile</Link>
+          <Link className="Link-button" to={`/edit-profile/${user._id}`}>Edit Profile</Link>
         </div>
       )}
 
