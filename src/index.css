@@ -139,6 +139,74 @@ button {
   text-decoration: underline;
 }
 
+/* signup page  */
+.SignUp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.SignUp form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.SignUp h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.SignUp label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.SignUp input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.SignUp button {
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  border: none;
+  background-color: #0077b6;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.SignUp button:hover {
+  background-color: #023e8a;
+}
+
+.SignUp p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.SignUp a {
+  color: #0077b6;
+  text-decoration: none;
+}
+
+.SignUp a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* profile page */
 .Profile {
