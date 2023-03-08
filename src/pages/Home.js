@@ -200,7 +200,9 @@ const Home = () => {
 
         {isUserPost(post) ? (
         <div>
-            <Link to={`/edit-post/${post._id}`}>Edit</Link>
+            <button className="delete">
+            <Link className="delete" to={`/edit-post/${post._id}`}>Edit</Link>
+            </button>
             <button
             className="delete"
             onClick={() => commentOnClick(post._id)}
@@ -229,7 +231,7 @@ const Home = () => {
 </div>
                   {post.bool && (
                     <>
-                      <form
+                      <form className="comment-form"
                         onSubmit={(e) => {
                           e.preventDefault();
                           commentSubmit(post._id);
@@ -239,7 +241,7 @@ const Home = () => {
                           name="comment"
                           onChange={handleComment}
                         ></textarea>
-                        <button>send</button>
+                        <button className="comment-send-btn">send</button>
                       </form>
                     </>
                   )}
@@ -265,7 +267,7 @@ const Home = () => {
         )}
       </div>
       <div className="profile-preview">
-        <h3>Friends List</h3>
+        <h3>Sponsored</h3>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ code {
 }
 
 img {
-  width: 2vw;
+  width: 150px;
 }
 
 button {
@@ -43,6 +43,7 @@ button {
   padding: 10px 20px;
   font-weight: 600;
   border-bottom: 1px solid #000000a8;
+  height: 29px;
 }
  
 .Navbar a {
@@ -53,7 +54,7 @@ button {
   font-size: 1.2rem;
   color: #ffffff;
 }
- 
+
 .selected {
   text-shadow: 1px 0px 3px white;
   border-bottom: rgba(230, 244, 77, 0.804) solid 2px;
@@ -185,6 +186,11 @@ button {
   width:80%
 }
 
+.☀ textarea {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
 .post-details {
   /* background-color: green; */
   display: flex;
@@ -237,8 +243,22 @@ button {
   .delete {
   border: none;
   background: none;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
+  }
+
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .comment-send-btn {
+    display: flex;
+    align-self: flex-end;
+    width: 25%;
+    margin-right: 0;
+    margin-left: 0;
   }
   
   /* Dark mode */
@@ -270,6 +290,17 @@ button {
     background-color: #252526;
     color: white;
   }
+
+  .☽ textarea {
+    background-color: grey;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .☽ ::placeholder {
+    color: white;
+  }
+  
 
 
   /* Media Queries

@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { ThemeContext } from "./../context/theme.context";
 import { LoadingContext } from "../context/loading.context";
 import { AuthContext } from "../context/auth.context";
-import logo from "../images/logo.png"; // import your image file
+import logo from "../images/logo.png"; 
+import text from "../images/text.png"
 
 function Navbar() {
   const { mode, toggle, setToggle, setMode } = useContext(ThemeContext);
@@ -22,7 +23,7 @@ function Navbar() {
   return (
     <nav className={"Navbar " + mode}>
       <div className="Navbar-left">
-        <Link to={'/home'}><img src={logo} alt="Home" /></Link>
+        <Link to={'/home'}><img src={text} alt="Home" /></Link>
       </div>
       <div className="Navbar-right">
         {getToken() ? 
