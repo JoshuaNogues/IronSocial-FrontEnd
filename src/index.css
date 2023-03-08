@@ -23,10 +23,6 @@ code {
   min-height: 100vh;
 } */
 
-img {
-  width: 150px;
-}
-
 button {
   margin: 0px 20px;
 }
@@ -37,7 +33,7 @@ button {
   left: 0;
   width: 98vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background: #ffffff;
   color: #ffffff;
   padding: 10px 20px;
@@ -238,6 +234,10 @@ button {
 .Navbar.☽{
   background-color: #252526;
 }
+
+.Navbar img {
+  width: 150px;
+}
  
 .☀ a,
 .☀ p,
@@ -356,6 +356,19 @@ button {
   text-align: start;
   /* background-color: red; */
 }
+
+.post-content > img {
+  max-width: 500px;
+}
+
+/* img {
+  width: 150px;
+} */
+
+.sponsored img {
+  width: 150px;
+}
+
 
 .post-actions {
   display: flex;
