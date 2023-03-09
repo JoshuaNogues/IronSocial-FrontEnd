@@ -14,6 +14,7 @@ const EditProfile = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const navigate = useNavigate()
 
   const handleLocationChange = (e) => {
@@ -92,9 +93,10 @@ console.log(username)
         </div>
         {success && <p style={{ color: "green" }}>{success}</p>}
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "Loading..." : "Save Changes"}
-        </button>
+        <button type="submit" disabled={isLoading || isUploading}>
+  {isLoading ? "Loading..." : "Save Changes"}
+</button>
+
       </form>
     </div>
   );

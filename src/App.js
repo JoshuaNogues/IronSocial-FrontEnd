@@ -22,7 +22,7 @@ function App() {
   }
 
   const LoggedIn = () => {
-    return getToken() ? <Outlet /> : <Navigate to="/" />;
+    return getToken() ? <Outlet /> : <Navigate to="/home" />;
   };
 
   const NotLoggedIn = () => {

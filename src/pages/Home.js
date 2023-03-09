@@ -198,6 +198,7 @@ const Home = () => {
           <button className="post-button" onClick={handleSubmit}>
             Post
           </button>
+
         </div>
         {posts ? (
           posts.map((post) => (
