@@ -62,6 +62,9 @@ const Profile = () => {
                 </div>
                     <div className="post-content">
                         <p>{post.post}</p>
+                        {
+                    post.photo && (<img src={post.photo} alt="picture"/>)
+                  }
                     </div>
                 <div className="post-actions">
                   <button className="delete">
