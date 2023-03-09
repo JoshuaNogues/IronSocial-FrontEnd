@@ -64,7 +64,9 @@ const Profile = () => {
                         <p>{post.post}</p>
                     </div>
                 <div className="post-actions">
+                  <button className="delete">
                   <Link to={`/edit-post/${post._id}`}>Edit</Link>
+                  </button>
                   <button
                     className="delete"
                     onClick={() => handleDelete(post._id)}

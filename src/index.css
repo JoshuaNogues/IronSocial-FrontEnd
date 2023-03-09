@@ -342,6 +342,12 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
+  .creator {
+    width: 10px;
+    margin: 5px;
+    /* display: flex; */
+  }
+
   .post-button {
     padding: 5px 10px;
     background-color: #004aad;
@@ -493,6 +499,42 @@ button {
     width: 25%;
     margin-right: 0;
     margin-left: 0;
+    background-color: #1877f2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+
+  .comment-textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  resize: none;
+  height: 30px;
+}
+
+.comment-send-btn:hover {
+  background-color: #0e5a8a;
+}
+
+  .comments {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .comment-post {
+    margin: 0px 10px 0px 0px
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .sponsored {

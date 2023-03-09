@@ -4,6 +4,7 @@ import { post, get } from "../services/authService";
 import { LoadingContext } from "../context/loading.context";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import logo from "../images/logo.png"
 
 const Home = () => {
   const { user, setUser, posts, setPosts, getPosts } = useContext(LoadingContext);
@@ -171,7 +172,7 @@ const Home = () => {
               alt="Profile"
             />
             <div className="profile-details">
-              <h3>{user.username}</h3>
+              <h3>{user.username}<img className="creator" src={logo} /></h3>
               <p className="occupation">📍{user.location}</p>
               <p className="occupation">💻{user.occupation}</p>
             </div>
@@ -257,18 +258,19 @@ const Home = () => {
 </div>
                   {post.bool && (
                     <>
-                      <form className="comment-form"
-                        onSubmit={(e) => {
-                          e.preventDefault();
-                          commentSubmit(post._id);
-                        }}
-                      >
-                        <textarea
-                          name="comment"
-                          onChange={handleComment}
-                        ></textarea>
-                        <button className="comment-send-btn">send</button>
-                      </form>
+                      <form className="comment-form" onSubmit={(e) => {
+    e.preventDefault();
+    commentSubmit(post._id);
+}}>
+  <textarea
+    className="comment-textarea"
+    name="comment"
+    onChange={handleComment}
+    placeholder="Add a comment"
+  ></textarea>
+  <button className="comment-send-btn">Post</button>
+</form>
+
                     </>
                   )}
                   {post.bool && 
@@ -276,10 +278,17 @@ const Home = () => {
 
     <>
         {
+    post.comments.map((post) => {
+        return (
+            <div className="comments">
+                <img className="profile-pic" src={user.profile_image} alt="profile-picture" />
+                <p className="comment-post"><strong>{user.username}</strong></p>
+                <p>{post.comment}</p>
+            </div>
+        );
+    })
+}
 
-        post.comments.map((post) => {
-        return <p>{post.comment}</p>;
-        })}
     </>
 
 
