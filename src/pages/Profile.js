@@ -37,13 +37,17 @@ fetchProfile()
 
 },[userId])
 
+const isUserProfile = (profileId) => {
+  return profileId === user._id;
+};
+
   //   useEffect(() => {
   //     if (!user) {
   //       authenticateUser();
   //       console.log(user)
   //     }
   //   }, []);
-
+console.log(user)
   return (
     <div className={"Profile " + mode}>
       <h1>Profile</h1>
@@ -53,7 +57,7 @@ fetchProfile()
           <h4>Hi, {profile.firstName}</h4>
           <p>📍{profile.location}</p>
           <p>💻{profile.occupation}</p>
-          <Link className="Link-button" to={`/edit-profile/${profile._id}`}>Edit Profile</Link>
+          {isUserProfile(profile._id)?<Link className="Link-button" to={`/edit-profile/${profile._id}`}>Edit Profile</Link>:""}
         </div>
       )}
 
