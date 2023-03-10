@@ -33,7 +33,7 @@ button {
   left: 0;
   width: 98vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   background: #ffffff;
   color: #ffffff;
@@ -402,7 +402,7 @@ button {
   padding: 10px;
   border: 2px solid #ccc;
   background-color: #f2f2f2;
-  width: 80%;
+  width: 60%;
   height: 25px;
   resize: none;
 }
@@ -720,25 +720,19 @@ input[type="file"] {
   
 
 
-  /* Media Queries
-  @media screen and (max-width: 768px) {
-    .Navbar {
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
-    }
-  
-    .Navbar a {
-      margin: 10px;
-    }
-  
-    .Home {
-      margin-top: 80px;
-    }
-  
-    .post, .post-container {
-      width: 90%;
-      margin-bottom: 10px;
-    }
-  } */
+  /* Large devices (desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) { */
+  /* CSS code here */
+/* } */
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* CSS code here */
+}
+
+/* Small devices (mobiles, 576px and up) */
+@media only screen and (max-width: 767px) {
+  /* CSS code here */
+}
+
   

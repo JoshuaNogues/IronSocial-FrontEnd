@@ -1,15 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../context/theme.context";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { LoadingContext } from "../context/loading.context";
 import { AuthContext } from "../context/auth.context";
 import { get } from "../services/authService";
+import axios from "axios";
 
 const Profile = () => {
   const { user } = useContext(LoadingContext);
   const { mode } = useContext(ThemeContext);
   const { authenticateUser } = useContext(AuthContext);
-
+  const {userId} = useParams()
+  const [profile, setProfile] = useState()
   const handleDelete = (postId) => {
     const userId = user._id;
     get(`/post/delete-post/${postId}/${userId}`)
@@ -21,6 +23,20 @@ const Profile = () => {
 
   console.log("this is the user", user);
 
+useEffect(() => {
+async function fetchProfile(){
+  try {
+    const response = await get(`/users/profile/${userId}`)
+    setProfile(response.data)
+    console.log(response.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+fetchProfile()
+
+},[userId])
+
   //   useEffect(() => {
   //     if (!user) {
   //       authenticateUser();
@@ -31,33 +47,33 @@ const Profile = () => {
   return (
     <div className={"Profile " + mode}>
       <h1>Profile</h1>
-      {user && (
+      {profile && (
         <div className="profile-top">
-          <img className="profile-page-pic" src={user.profile_image} alt="Profile" />
-          <h4>Hi, {user.firstName}</h4>
-          <p>📍{user.location}</p>
-          <p>💻{user.occupation}</p>
-          <Link className="Link-button" to={`/edit-profile/${user._id}`}>Edit Profile</Link>
+          <img className="profile-page-pic" src={profile.profile_image} alt="Profile" />
+          <h4>Hi, {profile.firstName}</h4>
+          <p>📍{profile.location}</p>
+          <p>💻{profile.occupation}</p>
+          <Link className="Link-button" to={`/edit-profile/${profile._id}`}>Edit Profile</Link>
         </div>
       )}
 
       <h3>My Posts</h3>
-      {user?.posts.length ? (
+      {profile?.posts.length ? (
         <>
-          {user.posts.map((post) => {
+          {profile.posts.map((post) => {
             return (
               <div className="post-container">
                 <div className="post-user-info">
                   <div className="profile-pic-div">
                     <img
                       className="profile-pic"
-                      src={user.profile_image}
+                      src={profile.profile_image}
                       alt="Profile"
                     />
                   </div>
                   <div className="post-details">
-                    <h4>{user.username}</h4>
-                    <p className="occupation">{user.occupation}</p>
+                    <h4>{profile.username}</h4>
+                    <p className="occupation">{profile.occupation}</p>
                   </div>
                 </div>
                     <div className="post-content">

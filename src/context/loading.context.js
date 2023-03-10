@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { get, post } from "../services/authService";
 import axios from "axios";
@@ -10,7 +10,7 @@ const LoadingProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState(null);
     const [message, setMessage] = useState('');
-
+  const [render, setRender] = useState(false)
     const [ posts, setPosts ] = useState(null)
     const [ post, setPost ] = useState(null)
 
@@ -33,6 +33,11 @@ const LoadingProvider = ({ children }) => {
     })
   }
 
+  useEffect(() => 
+  {
+    getPosts()
+  }, [render])
+
   const getPost = (id) => {
     get(`/posts/post-detail/${id}`)
       .then((results) => {
@@ -44,7 +49,7 @@ const LoadingProvider = ({ children }) => {
   }
 
     return (
-        <LoadingContext.Provider value={{ posts, post, isLoading, message, setUser, user, setPost, setPosts, setIsLoading, setMessage, setTimedMessage, getPosts, getPost }}>
+        <LoadingContext.Provider value={{ render, setRender, posts, post, isLoading, message, setUser, user, setPost, setPosts, setIsLoading, setMessage, setTimedMessage, getPosts, getPost }}>
           {children}
         </LoadingContext.Provider>
       );
