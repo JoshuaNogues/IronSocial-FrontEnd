@@ -44,6 +44,26 @@ function HomePage() {
 
   const { mode } = useContext(ThemeContext)
 
+  function loginRecruiter() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: "recruiter@test.com", password: "123" })
+    };
+  
+    post('/auth/login', { email: "recruiter@test.com", password: "123" })
+      .then((results) => {
+        console.log("Logged in as recruiter", results.data);
+        localStorage.setItem('authToken', results.data.token );
+        navigate('/home')
+        window.location.reload(); // reload the page after successful login
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  
+  
   return (
     <div className={"Login " + mode}>
       <img src={textLogo} alt="Logo" />
@@ -71,6 +91,7 @@ function HomePage() {
       <p>
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </p>
+      <button onClick={loginRecruiter}><b>Recruiters</b> click here for instant access</button>
     </div>
   );
 }
