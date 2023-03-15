@@ -61,7 +61,7 @@ console.log(user)
         </div>
       )}
 
-      <h3>My Posts</h3>
+      <h3>Posts</h3>
       {profile?.posts.length ? (
         <>
           {profile.posts.map((post) => {
