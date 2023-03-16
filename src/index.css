@@ -46,7 +46,6 @@ button {
 .Navbar a {
   list-style: none;
   text-decoration: none;
-  display: inline-block;
   margin: 0px 20px;
   font-size: 1.2rem;
   color: #ffffff;
@@ -735,14 +734,15 @@ input[type="file"] {
   body {
     overflow-x: hidden;
   }
-  img {
+  .post-content img {
     width: 90vw;
   }
   .textLogo {
     width: 320px;
   }
   input {
-    background-color: #ffffff;
+    background-color: #f2f2f2;
+    border: 1px solid #e6e6e6; 
   }
   .post-container {
     width: 90vw;
@@ -753,8 +753,39 @@ input[type="file"] {
   .profile-preview, .sponsored {
     display: none;
   }
+  .Navbar {
+    padding-left: 0%;
+  }
   .Navbar-right {
     display: flex;
+  }
+  .Navbar-left img {
+    content: url('./images/logo.png');
+    width: 10vw;
+    display: flex;
+    align-self: center;
+  }
+  .Navbar-right a {
+    content: url('https://cdn-icons-png.flaticon.com/512/1077/1077114.png');
+    width: 4vw;
+    display: flex;
+    align-self: center;
+    border-radius: 0.25rem;
+    background-color: #d3d3d3;
+    padding: 5px 10px;
+  }
+  .post-text {
+    overflow: hidden;
+  }
+  .logout-btn {
+    display: flex;
+    align-self: center;
+    content: url('https://cdn-icons-png.flaticon.com/512/992/992680.png');
+    width: 9vw;
+    display: flex;
+  }
+  .profile-top {
+    width: 95vw;
   }
 }
 

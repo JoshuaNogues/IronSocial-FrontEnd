@@ -29,7 +29,7 @@ function Navbar() {
         {getToken() ? 
           <>
             {user && <Link to={`/profile/${user._id}`}>Profile</Link>}
-            <button onClick={logout}>Logout</button>
+            <button className='logout-btn' onClick={logout}>Logout</button>
           </>
           : 
           <>
