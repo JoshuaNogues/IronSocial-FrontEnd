@@ -66,7 +66,7 @@ function HomePage() {
   
   return (
     <div className={"Login " + mode}>
-      <img src={textLogo} alt="Logo" />
+      <img className="textLogo" src={textLogo} alt="Logo" />
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email</label>

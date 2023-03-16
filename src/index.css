@@ -325,7 +325,7 @@ button {
   .profile-container {
     display: flex;
     justify-content: flex-start;
-    width: 300px;
+    /* width: 300px; */
   }
 
   .profile-preview {
@@ -732,7 +732,30 @@ input[type="file"] {
 
 /* Small devices (mobiles, 576px and up) */
 @media only screen and (max-width: 767px) {
-  /* CSS code here */
+  body {
+    overflow-x: hidden;
+  }
+  img {
+    width: 90vw;
+  }
+  .textLogo {
+    width: 320px;
+  }
+  input {
+    background-color: #ffffff;
+  }
+  .post-container {
+    width: 90vw;
+  }
+  .post {
+    width: 88vw;
+  }
+  .profile-preview, .sponsored {
+    display: none;
+  }
+  .Navbar-right {
+    display: flex;
+  }
 }
 
   
