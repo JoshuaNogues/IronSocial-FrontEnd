@@ -189,7 +189,7 @@ const Home = () => {
           />
           <textarea
             className="post-text"
-            placeholder="Start a post"
+            placeholder="What's on your mind?"
             name="postText"
             value={postText}
             onChange={handlePost}
