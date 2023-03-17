@@ -731,9 +731,6 @@ input[type="file"] {
 
 /* Small devices (mobiles, 576px and up) */
 @media only screen and (max-width: 767px) {
-  body {
-    overflow-x: hidden;
-  }
   .post-content img {
     width: 90vw;
   }
