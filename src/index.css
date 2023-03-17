@@ -337,7 +337,7 @@ button {
     border-radius: 10px;
     width: 300px;
     margin: 30px 30px;
-    height: 15vh;
+    height: 200px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
@@ -552,7 +552,7 @@ button {
     border-radius: 10px;
     width: 300px;
     margin: 30px 30px;
-    height: 20vh;
+    height: 270px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     text-align: center;
