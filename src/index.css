@@ -774,7 +774,7 @@ input[type="file"] {
     padding: 5px 10px;
   }
   .post-text {
-    overflow: hidden;
+    overflow: hidden
   }
   .logout-btn {
     display: flex;
