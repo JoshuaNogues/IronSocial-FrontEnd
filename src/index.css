@@ -756,6 +756,7 @@ input[type="file"] {
   }
   .Navbar-right {
     display: flex;
+    flex-direction: row;
   }
   .Navbar-left img {
     content: url('./images/logo.png');
