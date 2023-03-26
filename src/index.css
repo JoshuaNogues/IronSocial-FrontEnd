@@ -730,6 +730,12 @@ input[type="file"] {
   /* CSS code here */
 }
 
+@media only screen and (max-width: 1300px) {
+  .sponsored {
+    display: none;
+  }
+}
+
 /* Small devices (mobiles, 576px and up) */
 @media only screen and (max-width: 767px) {
   .post-content img {
