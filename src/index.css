@@ -718,6 +718,9 @@ input[type="file"] {
     color: white;
   }
   
+  .☽ .img-logo {
+    filter: invert(1);
+  }
 
 
   /* Large devices (desktops, 992px and up) */
