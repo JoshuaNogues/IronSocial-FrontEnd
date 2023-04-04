@@ -22,12 +22,12 @@ function App() {
   }
 
   const LoggedIn = () => {
-    return getToken() ? <Outlet /> : <Navigate to="/home" />;
+    return getToken() ? <Outlet /> : <Navigate to="/home" replace />;
   };
-
+  
   const NotLoggedIn = () => {
-    return !getToken() ? <Outlet /> : <Navigate to="/" />;
-  };
+    return !getToken() ? <Outlet /> : <Navigate to="/" replace />;
+  };  
 
   return (
     <div className={"App " + mode}>

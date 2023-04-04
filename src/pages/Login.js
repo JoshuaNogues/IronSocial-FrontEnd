@@ -91,7 +91,7 @@ function HomePage() {
       <p>
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </p>
-      <button onClick={loginRecruiter}><b>Recruiters</b> <u>click here for instant access</u></button>
+      {/* <button onClick={loginRecruiter}><b>Recruiters</b> <u>click here for instant access</u></button> */}
     </div>
   );
 }
