@@ -1,5 +1,5 @@
 import { ThemeContext } from '../context/theme.context';
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/auth.context"
 import { post } from "../services/authService"
@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import textLogo from "../images/text.png"
 
 function HomePage() {
+
+  const { user } = useContext(AuthContext);
 
   const { authenticateUser } = useContext(AuthContext)
 
@@ -62,6 +64,12 @@ function HomePage() {
         console.log(err);
       });
   }
+
+  useEffect(() => {
+    if (user) {
+      navigate("/home");
+    }
+  }, [user, navigate]);
   
   
   return (
